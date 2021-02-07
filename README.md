@@ -1,4 +1,9 @@
-# medicalz
+# Medicalz
+
+![](src/assets/print.png)
+
+# Description
+This is a Study Case to improve my UI/UX skills.
 
 ## Project setup
 ```
