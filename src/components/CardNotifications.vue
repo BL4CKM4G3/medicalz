@@ -8,10 +8,10 @@
             color="cyan darken-1"
           ></v-list-item-avatar>
         </v-col>
-        <v-col md="4">
-          <v-list-item-title class="ml-n2">KogNum</v-list-item-title>
+        <v-col md="3">
+          <v-list-item-title class="ml-n2">Active</v-list-item-title>
         </v-col>
-        <v-col md="4">
+        <v-col md="6">
           <v-list-item-subtitle class="ml-n2">10 Sec</v-list-item-subtitle>
         </v-col>
       </v-row>
