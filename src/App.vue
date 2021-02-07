@@ -1,32 +1,45 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <v-app :style="{ background: $vuetify.theme.themes.light.background }">
+      <v-container class="px-0 fill-height pb-10 pt-0 fill-width">
+        <sidebar :drawer="drawer"></sidebar>
+        <v-main>
+          <v-container class="px-4 py-0 pt-2 fill-height" fluid>
+            <v-row class="fill-height">
+              <v-col>
+                <transition name="fade">
+                  <router-view />
+                </transition>
+              </v-col>
+            </v-row>
+          </v-container>
+        </v-main>
+      </v-container>
+    </v-app>
   </div>
 </template>
 
+<script>
+import Header from "./components/Header.vue";
+import Sidebar from "./components/Sidebar";
+
+export default {
+  name: "App",
+  components: {
+    Sidebar,
+    Header,
+  },
+  data: () => ({
+    drawer: true,
+  }),
+  methods: {
+    drawerToggle(event) {
+      this.drawer = event;
+    },
+  },
+};
+</script>
+
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
+@import "./assets/scss/index";
 </style>
