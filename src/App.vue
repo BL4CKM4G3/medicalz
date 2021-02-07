@@ -1,32 +1,51 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <v-app>
+      <sidebar :drawer="drawer"></sidebar>
+      <v-main>
+        <v-container class="pt-6">
+          <transition name="fade">
+            <router-view></router-view>
+          </transition>
+        </v-container>
+      </v-main>
+    </v-app>
   </div>
 </template>
 
+<script>
+import Sidebar from "./components/Sidebar.vue";
+export default {
+  name: "App",
+  components: {
+    Sidebar,
+  },
+  data: () => ({
+    drawer: true,
+  }),
+  methods: {
+    drawerToggle(event) {
+      this.drawer = event;
+    },
+  },
+};
+</script>
+
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+@import "./assets/scss/index";
+html::-webkit-scrollbar {
+  width: 6px;
+  background: #00ACC1;
 }
 
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+html::-webkit-scrollbar-thumb {
+  width: 6px;
+  background: #005661;
+  filter: hue-rotate(0deg);
+  transition: filter 1s ease-out;
+  &:hover {
+    transition: filter 1s ease-in;
+    filter: hue-rotate(90deg);
   }
 }
 </style>
