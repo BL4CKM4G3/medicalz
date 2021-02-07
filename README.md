@@ -1,4 +1,6 @@
-# medicalz
+# Medicalz
+
+![](src/assets/print.png)
 
 ## Project setup
 ```
