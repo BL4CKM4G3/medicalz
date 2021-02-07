@@ -3,20 +3,22 @@
     <v-app>
       <sidebar :drawer="drawer"></sidebar>
       <v-main>
-        <router-view></router-view>
+        <v-container class="pt-6">
+          <transition name="fade">
+            <router-view></router-view>
+          </transition>
+        </v-container>
       </v-main>
     </v-app>
   </div>
 </template>
 
 <script>
-import Header from "./components/Header.vue";
 import Sidebar from "./components/Sidebar.vue";
 export default {
   name: "App",
   components: {
     Sidebar,
-    Header,
   },
   data: () => ({
     drawer: true,
@@ -31,6 +33,19 @@ export default {
 
 <style lang="scss">
 @import "./assets/scss/index";
+html::-webkit-scrollbar {
+  width: 6px;
+  background: #00ACC1;
+}
+
+html::-webkit-scrollbar-thumb {
+  width: 6px;
+  background: #005661;
+  filter: hue-rotate(0deg);
+  transition: filter 1s ease-out;
+  &:hover {
+    transition: filter 1s ease-in;
+    filter: hue-rotate(90deg);
+  }
+}
 </style>
-};
-</script>
